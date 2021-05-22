@@ -5,7 +5,16 @@
 #pragma mark - First
 
 -(NSString *)monthNameBy:(NSUInteger)monthNumber {
-    return nil;
+    
+    if (monthNumber == 0 || monthNumber > 12) {
+        return nil;
+    }
+    
+    NSArray *monthArray = @[@"January", @"February", @"March", @"April", @"May", @"June", @"July", @"August", @"September", @"October", @"November", @"December"];
+    
+    NSString *str = [NSString stringWithString:[monthArray objectAtIndex:monthNumber - 1]].capitalizedString;
+    
+    return str;
 }
 
 #pragma mark - Second
