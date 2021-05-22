@@ -20,7 +20,24 @@
 #pragma mark - Second
 
 - (long)dayFromDate:(NSString *)date {
-    return 0;
+    
+    NSMutableString *month = [NSMutableString new];
+    NSMutableString *day = [NSMutableString new];
+    
+    for (NSInteger i = 0; i<date.length; i++) {
+        char cr = [date characterAtIndex:i];
+        if (i == 5 || i == 6) {
+            [month appendFormat:@"%c", cr];
+        } else if (i == 8 || i == 9) {
+            [day appendFormat:@"%c", cr];
+        }
+    }
+    
+    if (month.intValue == 0 || month.intValue > 12) {
+        return 0;
+    }
+    
+    return [day intValue];
 }
 
 #pragma mark - Third
