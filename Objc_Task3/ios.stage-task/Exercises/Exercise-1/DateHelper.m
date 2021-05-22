@@ -26,7 +26,21 @@
 #pragma mark - Third
 
 - (NSString *)getDayName:(NSDate*) date {
-    return nil;
+    
+    if (date == nil) {
+        return nil;
+    }
+    
+    NSDateFormatter *formateWeek = [[NSDateFormatter alloc] init];
+    
+    NSLocale *locale = [NSLocale localeWithLocaleIdentifier:@"RU_ru"];
+    
+    [formateWeek setDateFormat:@"EEE"];
+    [formateWeek setLocale: locale];
+    
+    NSString *str = [formateWeek stringFromDate:date];
+    
+    return str;
 }
 
 #pragma mark - Fourth
