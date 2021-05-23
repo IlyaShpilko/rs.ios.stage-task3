@@ -3,7 +3,12 @@
 @implementation PlayersSeparator
 
 - (NSInteger)dividePlayersIntoTeams:(NSArray<NSNumber *>*)ratingArray {
-    return 0;
+    if (ratingArray.count == 0 || ratingArray.count < 3U) {
+        return 0;
+    }
+    
+    
+    return @[@1, @2, @3];
 }
 
 @end

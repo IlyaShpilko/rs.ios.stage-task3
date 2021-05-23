@@ -63,7 +63,24 @@
 #pragma mark - Fourth
 
 - (BOOL)isDateInThisWeek:(NSDate *)date {
-    return NO;
+    
+    NSDate *start;
+    NSTimeInterval extends;
+    NSCalendar *cal = [NSCalendar autoupdatingCurrentCalendar];
+    NSDate *today = [NSDate date];
+    BOOL seccess = [cal rangeOfUnit: NSWeekCalendarUnit startDate:&start interval:&extends forDate:today];
+    
+    if (!seccess)
+        return NO;
+    
+    NSTimeInterval dateInSecs = [date timeIntervalSinceReferenceDate];
+    NSTimeInterval dayStartInSecs = [start timeIntervalSinceReferenceDate];
+    
+    if (dateInSecs > dayStartInSecs && dateInSecs < (dayStartInSecs + extends)) {
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 @end
