@@ -21,23 +21,16 @@
 
 - (long)dayFromDate:(NSString *)date {
     
-    NSMutableString *month = [NSMutableString new];
-    NSMutableString *day = [NSMutableString new];
+    NSString *dateString = @"yyyy-MM-dd'T'HH:mm:ss'Z'";
     
-    for (NSInteger i = 0; i<date.length; i++) {
-        char cr = [date characterAtIndex:i];
-        if (i == 5 || i == 6) {
-            [month appendFormat:@"%c", cr];
-        } else if (i == 8 || i == 9) {
-            [day appendFormat:@"%c", cr];
-        }
-    }
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    [formatter setDateFormat:dateString];
     
-    if (month.intValue == 0 || month.intValue > 12) {
-        return 0;
-    }
+    NSDate *newDate = [formatter dateFromString:date];
     
-    return [day intValue];
+    NSCalendar *calendar =[NSCalendar currentCalendar];
+    
+    return [calendar component:NSCalendarUnitDay fromDate:newDate];
 }
 
 #pragma mark - Third
