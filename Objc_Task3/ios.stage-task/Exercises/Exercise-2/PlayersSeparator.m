@@ -30,6 +30,7 @@
             }
             
             for (int k = j+1; k < [ratingArray count]; k++) {
+                
                 if ([ratingArray[k] intValue] > [[first lastObject] intValue]) {
                     [first addObject:[ratingArray objectAtIndex:k]];
                 } else if ([[ratingArray objectAtIndex:k] intValue] < [[second lastObject] intValue]) {
@@ -45,14 +46,10 @@
                     [result addObject: [[second valueForKey:@"description"] componentsJoinedByString:@""]];
                     [second removeLastObject];
                 }
-                
             }
-            
         }
     }
     return [result count];
 }
-
-
 
 @end
